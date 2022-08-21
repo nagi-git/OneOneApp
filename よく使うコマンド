@@ -1,3 +1,0 @@
-composer create-project –prefer-dist laravel/laravel sampleboard
-
-php artisan serve

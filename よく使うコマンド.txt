@@ -1,0 +1,9 @@
+composer create-project –prefer-dist laravel/laravel sampleboard
+
+php artisan serve
+
+php artisan make:migration <ファイル名> -create=<テーブル名>
+php artisan migrate
+php artisan migrate:rollback
+
+npm run dev
