@@ -1,4 +1,4 @@
-composer create-project –prefer-dist laravel/laravel sampleboard
+composer create-project laravel/laravel sample-project --prefer-dist
 
 php artisan serve
 
