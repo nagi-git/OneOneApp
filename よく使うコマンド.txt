@@ -7,3 +7,6 @@ php artisan migrate
 php artisan migrate:rollback
 
 npm run dev
+
+定義へ移動：F12
+戻る：Alt + Left

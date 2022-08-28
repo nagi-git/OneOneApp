@@ -19,7 +19,7 @@ function getLangContent($str)
 
 // ja言語ファイルディレクトリ作成
 if (false === is_dir(getcwd().'/resources/lang/ja')) {
-    if (false === mkdir(getcwd().'/resources/lang/ja', 0777, true)) {
+    if (false === mk.00dir(getcwd().'/resources/lang/ja', 0777, true)) {
         file_put_contents('php://stderr', getcwd().'/resources/lang/jaディレクトリを作成できませんでした。'.PHP_EOL);
 
         exit(1);
