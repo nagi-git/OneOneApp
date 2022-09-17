@@ -3,8 +3,18 @@ composer create-project laravel/laravel sample-project --prefer-dist
 php artisan serve
 
 php artisan make:migration <ファイル名> -create=<テーブル名>
+php artisan make:migration create_meeting_recoords_table
+php artisan make:migration create_meetings_table
+php artisan make:migration create_meeting_user_table
 php artisan migrate
 php artisan migrate:rollback
+php artisan migrate:status
+
+CRUD一式セットのコントローラー
+php artisan make:controller <クラス名> --resource
+php artisan make:controller MtgLogController --resource
+
+php artisan make:model MtgLogs
 
 npm run dev
 
