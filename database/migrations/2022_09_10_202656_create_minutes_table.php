@@ -15,8 +15,9 @@ class CreateMinutesTable extends Migration
     {
         Schema::create('minutes', function (Blueprint $table) {
             $table->id();
-            $table->text('content')->comment('議事録内容');
-            $table->timestamps();
+            $table->text('content')->comment('内容');
+            $table->foreignId('meeting_id')->constrained('meetings')->onDelete('cascade')->comment('会議id');
+            $table->systemColumns();
         });
     }
 

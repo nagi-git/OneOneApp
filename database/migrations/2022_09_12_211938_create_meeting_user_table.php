@@ -15,9 +15,9 @@ class CreateMeetingUserTable extends Migration
     {
         Schema::create('meeting_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->comment('参加者ユーザーのid');
+            $table->foreignId('user_id')->constrained('users')->comment('参加者ユーザーid');
             $table->foreignId('meeting_id')->constrained('meetings')->comment('会議id');
-            $table->timestamps();
+            $table->systemColumns();
         });
     }
 

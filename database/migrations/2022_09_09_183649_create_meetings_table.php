@@ -15,12 +15,12 @@ class CreateMeetingsTable extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('meeting_date')->comment('会議の日時');
             $table->string('title')->comment('会議のタイトル');
+            $table->dateTime('start_date_time')->comment('開始日時');
+            $table->dateTime('end_date_time')->comment('終了日時');
             $table->text('agenda')->comment('会議の内容');
             $table->text('other')->comment('その他');
-            $table->foreignId('minute_id')->constrained('minutes')->onDelete('cascade')->comment('議事録id');
-            $table->timestamps();
+            $table->systemColumns();
         });
     }
 
