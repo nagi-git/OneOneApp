@@ -66,6 +66,8 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            // TODO: 名前のカナは後で考える
+            'name_kana' => 'ほげ',
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

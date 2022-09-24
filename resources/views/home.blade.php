@@ -19,19 +19,26 @@
                         @csrf
                         <div class="form-group mb-2">
                             <label for="title">■タイトル</label>
-                            <input type="title" class="form-control bg-white" id="title" name="title" value="テスト" placeholder="エムにゃんの1on1">
+              <div class="col-auto p-0 pb-1 m-0">
+                <input type="text" class="form-control bg-white" id="title" name="title" value="テスト" placeholder="エムにゃんの1on1">
                         </div>
-                        <div class="row g-3 form-group mb-2">
+            </div>
+            <div class="form-group mb-2">
+              <div class="row g-3">
                             <label for="meeting_date">■日時</label>
                             <div class="col-5 m-0">
-                                <input type="meeting_date" class="form-control bg-white d-inline" id="meeting_date" name="meeting_date" value="2020-01-01" placeholder="2022/08/20">
+                    <input id="meeting_date" class="form-control" type="date" name="meeting_date" />
+                    <span id="meeting_date_selected"></span>
                             </div>
                             <div class="col-3 m-0">
-                                <input type="start_time" class="form-control bg-white d-inline" id="start_time" name="start_time" value="17:00" placeholder="17:00">
+                    <input id="start_time" class="form-control" type="time" name="start_time"/>
+                    <span id="start_time_selected"></span>
                             </div>
-                            <p class="col-auto pt-1 m-0">～</p>
+                <div class="col-auto d-flex align-items-center p-0 m-0">～</div>
                             <div class="col-3 m-0">
-                                <input type="end_time" class="form-control bg-white d-inline" id="end_time" name="end_time" value="18:00" placeholder="18:00">
+                    <input id="end_time" class="form-control" type="time" name="end_time"/>
+                    <span id="end_time_selected"></span>
+                </div>
                             </div>
                         </div>
                         <div class="form-group mb-2">

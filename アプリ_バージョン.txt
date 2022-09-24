@@ -1,0 +1,16 @@
+https://younaship.com/2020/08/12/laravel-make-app/
+
+composer create-project --prefer-dist laravel/laravel OneOneApp
+
+
+mysql  Ver 15.1 Distrib 10.4.24-MariaDB
+
+とりあえず私は↓のサイトを参考に環境構築しました。
+https://chigusa-web.com/blog/laravel-setup/
+
+バージョン関連はこちらでいれてます↓
+XAMPP 8.1.6
+PHP 8.1.6
+Composer version 2.3.10
+Laravel Framework 9.20.0
+
