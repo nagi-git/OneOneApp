@@ -6,7 +6,7 @@
     <button type="button" class="btn btn-primary d-inline pes-1 mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
         ＋追加
     </button>
-    <meeting-modal-component>
+    <meeting-modal-component :csrf="{{json_encode(csrf_token())}}">
     </meeting-modal-component>
 
     <div class="row col-md-12 justify-content-center">

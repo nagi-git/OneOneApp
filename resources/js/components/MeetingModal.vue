@@ -6,13 +6,17 @@
         </div>
         <div class="modal-body">
             <form method="POST" action="{{ route('meeting') }}">
-                @csrf
+                <input type="hidden" name="_token" v-bind:value="csrf">
                 <div class="form-group mb-2">
                     <label for="title">■タイトル</label>
-
-                    <multiselect-component></multiselect-component>
                     <div class="col-auto p-0 pb-1 m-0">
-                        <input type="text" class="form-control bg-white" id="title" name="title" value="テスト" placeholder="エムにゃんの1on1">
+                        <input type="text"
+                            class="form-control bg-white"
+                            id="title"
+                            name="title"
+                            value="テスト"
+                            placeholder="エムにゃんの1on1"
+                        >
                     </div>
                 </div>
                 <div class="form-group mb-2">
@@ -35,7 +39,8 @@
                 </div>
                 <div class="form-group mb-2">
                     <label for="meeting_user">■参加者</label>
-                    <input type="meeting_user" class="form-control bg-white" id="meeting_user" name="meeting_user" value="エムにゃん" placeholder="エムにゃん">
+                    <!-- <input type="meeting_user" class="form-control bg-white" id="meeting_user" name="meeting_user" value="エムにゃん" placeholder="エムにゃん"> -->
+                    <multiselect-component></multiselect-component>
                 </div>
                 <div class="form-group mb-2">
                     <label for="FormControlTextarea1">■MTGの内容</label>
@@ -50,30 +55,14 @@
         </div>
     </modal-component>
 </template>
-<!-- 
-<script>
-export default {
-    // created() {
-    // },
-    // computed: {
-    // },
-    // props: {
-    // },
-    // data() {
-    //     return {
-    //     }
-    // },
-    // methods: {
-    //     show() {
-    //         this.$modal.show('hello-world');
-    //     },
-    //     hide() {
-    //         this.$modal.hide('hello-world');
-    //     }
-    // }
-}
-</script>
-    
-<style lang='sass' scoped>
 
-</style> -->
+<script>
+  export default {
+    props:  {
+      csrf: {
+        type: String,
+        required: true,
+      }
+    }
+  }
+</script>
