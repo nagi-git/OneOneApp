@@ -13,6 +13,7 @@ php artisan migrate:status
 CRUD一式セットのコントローラー
 php artisan make:controller <クラス名> --resource
 php artisan make:controller MeetingController --resource
+php artisan make:controller UserController --resource
 
 php artisan make:model Meeting
 

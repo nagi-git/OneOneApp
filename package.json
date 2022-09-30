@@ -17,6 +17,7 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
-        "vue-multiselect": "^3.0.0-alpha.2"
+        "vue-multiselect": "^3.0.0-alpha.2",
+        "vue-router": "^4.0.13"
     }
 }
