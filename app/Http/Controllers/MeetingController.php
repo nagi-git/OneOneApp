@@ -48,6 +48,8 @@ class MeetingController extends Controller
         $meeting->other = $request->other;
 
         $meeting->save();
+        $meeting->meeting_user = $request->meeting_user;
+        $meeting->users()->attach($meeting->meeting_user);
         return redirect('/home');
     }
 

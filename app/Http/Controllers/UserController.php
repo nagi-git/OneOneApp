@@ -21,7 +21,6 @@ class UserController extends Controller
         $users = DB::table('users')
                     ->select('id', 'name', 'name_kana')
                     ->get();
-        Log::error($users);
         return $users;
     }
 

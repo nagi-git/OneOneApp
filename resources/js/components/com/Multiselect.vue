@@ -8,6 +8,7 @@
       placeholder="参加予定のユーザー"
       label="name"
       track-by="name"
+      @close="onClose"
     ></multiselect>
   </div>
 </template>
@@ -21,7 +22,13 @@
           value: [],
         }
       },
-      props: ["users"]
+      props: ["users"],
+      methods: {
+        onClose () {
+            console.log(this.value)
+          this.$emit("onSelect", this.value)
+        },
+      },
     }
 </script>
 
