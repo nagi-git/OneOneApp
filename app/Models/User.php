@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'name_kana',
         'email',
         'password',
     ];
@@ -31,6 +32,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'email',
+        'password',
+        'created_at',
+        'updated_at',
+        'email_verified_at',
     ];
 
     /**
@@ -44,6 +50,6 @@ class User extends Authenticatable
 
     public function meetings()
     {
-        return $this->belongsToMany(Meeting::class);
+        return $this->belongsToMany(Meeting::class)->withTimestamps();
     }
 }

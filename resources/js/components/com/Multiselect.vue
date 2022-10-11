@@ -25,7 +25,6 @@
       props: ["users"],
       methods: {
         onClose () {
-            console.log(this.value)
           this.$emit("onSelect", this.value)
         },
       },

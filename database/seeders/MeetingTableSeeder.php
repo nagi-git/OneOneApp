@@ -23,7 +23,7 @@ class MeetingTableSeeder extends Seeder
                 'start_date_time' => new DateTime(),
                 'end_date_time' => new DateTime(),
                 'agenda' => Str::random(10),
-                'other' => Str::random(10),
+                'how' => Str::random(10),
             ]
         ]);
     }

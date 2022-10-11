@@ -15,9 +15,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        // return view('user.profile', [
-        //     'user' => User::all()
-        // ]);
         $users = DB::table('users')
                     ->select('id', 'name', 'name_kana')
                     ->get();

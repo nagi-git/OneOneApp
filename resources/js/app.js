@@ -18,14 +18,18 @@ const app = createApp({});
 import router from './router'
 import ExampleComponent from './components/com/ExampleComponent.vue';
 import ModalComponent from './components/com/Modal.vue';
-import MeetingModalComponent from './components/MeetingModal.vue';
-import MultiselectComponent from './components/com/Multiselect.vue';
+import MeetingModal from './components/MeetingModal.vue';
+import MeetingList from './components/MeetingList.vue';
+import MeetingDetail from './components/MeetingDetail.vue';
+import Multiselect from './components/com/Multiselect.vue';
 
 app.use(router);
 app.component('example-component', ExampleComponent);
 app.component('modal-component', ModalComponent);
-app.component('meeting-modal-component', MeetingModalComponent);
-app.component('Multiselect', MultiselectComponent);
+app.component('meeting-modal', MeetingModal);
+app.component('multi-select', Multiselect);
+app.component('meeting-list', MeetingList);
+app.component('meeting-detail', MeetingDetail);
 
 /**
  * The following block of code may be used to automatically register your

@@ -8,44 +8,64 @@
             <form @submit.prevent="postMeeting">
                 <input type="hidden" name="_token" v-bind:value="csrf" />
 
-                <div class="form-group mb-2">
-                    <label for="title">■タイトル</label>
-                    <div class="col-auto p-0 pb-1 m-0">
-                        <input type="text" class="form-control bg-white" id="title" name="title" v-model="meetingDetail.title"
-                            placeholder="エムにゃんの1on1">
+                <div class="form-group mb-3">
+                    <div class="row">
+                        <div class="col-1 d-flex align-items-center">
+                            <i class="fa-solid fa-location-dot me-2 ms-1"></i>
+                        </div>
+                        <div class="col-11">
+                            <input type="text" class="form-control bg-white" id="title" name="title" v-model="meetingDetail.title"
+                                placeholder="タイトルを追加">
+                        </div>
                     </div>
                 </div>
-                <div class="form-group mb-2">
-                    <div class="row g-3">
-                        <label for="meeting_date">■日時</label>
-                        <div class="col-5 m-0">
-                            <input id="meeting_date" class="form-control" type="date" name="meeting_date"
-                                v-model="meetingDetail.meeting_date" />
-                            <span id="meeting_date_selected"></span>
+                <div class="form-group mb-3">
+                    <div class="row">
+                        <div class="col-1 d-flex align-items-center">
+                            <i class="fa-solid fa-location-dot me-2 ms-1"></i>
                         </div>
-                        <div class="col-3 m-0">
+                        <div class="col-4 pe-1">
+                            <input id="date" class="form-control" type="date" name="date"
+                                v-model="meetingDetail.date" />
+                            <span id="date_selected"></span>
+                        </div>
+                        <div class="col-3 pe-0">
                             <input id="start_time" class="form-control" type="time" name="start_time"
                                 v-model="meetingDetail.start_time" />
                             <span id="start_time_selected"></span>
                         </div>
-                        <div class="col-auto d-flex align-items-center p-0 m-0">～</div>
-                        <div class="col-3 m-0">
+                        <div class="col-auto d-flex align-items-center p-0 m-1">～</div>
+                        <div class="col-3 p-0">
                             <input id="end_time" class="form-control" type="time" name="end_time" v-model="meetingDetail.end_time" />
                             <span id="end_time_selected"></span>
                         </div>
                     </div>
                 </div>
-                <div class="form-group mb-2">
-                    <label for="meeting_user">■参加者</label>
-                    <Multiselect :users="users" @onSelect="onSelectUsers"/>
+                <div class="form-group mb-3">
+                    <div class="row">
+                        <div class="col-1 d-flex align-items-center">
+                            <i class="fa-solid fa-user me-2 ms-1"></i>
+                        </div>
+                        <div class="col-11">
+                            <multi-select :users="users" @onSelect="onSelectUsers"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group mb-2">
-                    <label for="agenda">■MTGの内容</label>
+                    <div class="row">
+                        <div class="col-1 d-flex align-items-center">
+                            <i class="fa-solid fa-location-dot me-2 ms-1"></i>
+                        </div>
+                        <div class="col-11">
+                            <textarea class="form-control" id="how" name="how" rows="1" v-model="meetingDetail.how"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="agenda">
+                        <i class="fa-regular fa-file-lines me-2 ms-1"></i>MTGの内容
+                    </label>
                     <textarea class="form-control" id="agenda" name="agenda" rows="5" v-model="meetingDetail.agenda"></textarea>
-                </div>
-                <div class="form-group mb-2">
-                    <label for="other">■その他</label>
-                    <textarea class="form-control" id="other" name="other" rows="1" v-model="meetingDetail.other"></textarea>
                 </div>
                 <button class="btn btn-primary m-2" type="submit">保存</button>
             </form>
@@ -68,12 +88,12 @@ export default {
         return {
             meetingDetail: {
                 'title': "",
-                'meeting_date': "",
+                'date': "",
                 'start_time': "",
                 'end_time': "",
                 'meeting_user': "",
                 'agenda': "",
-                'other': "",
+                'how': "",
             },
             "users": [],
         }
