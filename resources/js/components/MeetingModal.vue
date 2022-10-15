@@ -11,18 +11,18 @@
                 <div class="form-group mb-3">
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
-                            <i class="fa-solid fa-location-dot me-2 ms-1"></i>
+                            <i class="fa-regular fa-face-smile me-2 ms-1"></i>
                         </div>
                         <div class="col-11">
                             <input type="text" class="form-control bg-white" id="title" name="title" v-model="meetingDetail.title"
-                                placeholder="タイトルを追加">
+                                placeholder="タイトル">
                         </div>
                     </div>
                 </div>
                 <div class="form-group mb-3">
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
-                            <i class="fa-solid fa-location-dot me-2 ms-1"></i>
+                            <i class="fa-regular fa-calendar-check me-2 ms-1"></i>
                         </div>
                         <div class="col-4 pe-1">
                             <input id="date" class="form-control" type="date" name="date"
@@ -44,30 +44,37 @@
                 <div class="form-group mb-3">
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
-                            <i class="fa-solid fa-user me-2 ms-1"></i>
+                            <i class="fa-solid fa-user-group me-2 ms-1"></i>
                         </div>
                         <div class="col-11">
                             <multi-select :users="users" @onSelect="onSelectUsers"/>
                         </div>
                     </div>
                 </div>
-                <div class="form-group mb-2">
+                <div class="form-group mb-3">
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
                             <i class="fa-solid fa-location-dot me-2 ms-1"></i>
                         </div>
                         <div class="col-11">
-                            <textarea class="form-control" id="how" name="how" rows="1" v-model="meetingDetail.how"></textarea>
+                            <textarea class="form-control" id="how" name="how" rows="1" v-model="meetingDetail.how"
+                                placeholder="場所またはURL"></textarea>
                         </div>
                     </div>
                 </div>
-                <div class="form-group mb-2">
-                    <label for="agenda">
-                        <i class="fa-regular fa-file-lines me-2 ms-1"></i>MTGの内容
-                    </label>
-                    <textarea class="form-control" id="agenda" name="agenda" rows="5" v-model="meetingDetail.agenda"></textarea>
+                <div class="form-group mb-3">
+                    <div class="row">
+                        <div class="col-1 mt-2">
+                            <i class="fa-regular fa-file-lines me-2 ms-1"></i>
+                        </div>
+                        <div class="col-11">
+                            <textarea class="form-control" id="agenda" name="agenda" rows="5" v-model="meetingDetail.agenda"
+                                placeholder="MTGの内容">
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
-                <button class="btn btn-primary m-2" type="submit">保存</button>
+                <button class="btn btn-primary m-1" type="submit">保存</button>
             </form>
         </div>
     </modal-component>
@@ -75,7 +82,7 @@
 
 <script>
 import axios from 'axios';
-import Multiselect from "./com/Multiselect.vue";
+import Multiselect from './com/Multiselect.vue';
 
 export default {
     props: {
@@ -87,15 +94,15 @@ export default {
     data() {
         return {
             meetingDetail: {
-                'title': "",
-                'date': "",
-                'start_time': "",
-                'end_time': "",
-                'meeting_user': "",
-                'agenda': "",
-                'how': "",
+                'title': '',
+                'date': '',
+                'start_time': '',
+                'end_time': '',
+                'meeting_user': '',
+                'agenda': '',
+                'how': '',
             },
-            "users": [],
+            'users': [],
         }
     },
     components: {

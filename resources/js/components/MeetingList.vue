@@ -3,7 +3,7 @@
         <div class="accordion" id="accordion">
             <div class="col-md-12 justify-content-center">
                 <meeting-detail v-for="meeting of meetings"
-                    v-bind:key="meeting.id"
+                    v-bind:key="meeting"
                     v-bind:id="meeting.id"
                     v-bind:title="meeting.title"
                     v-bind:date="meeting.date"
@@ -11,6 +11,7 @@
                     v-bind:end_time="meeting.end_time"
                     v-bind:agenda="meeting.agenda"
                     v-bind:how="meeting.how"
+                    v-bind:users="meeting.users"
                 >
                 </meeting-detail>
             </div>
@@ -41,6 +42,7 @@ export default {
                 'meeting_user': meeting.meeting_user,
                 'agenda': meeting.agenda,
                 'how': meeting.how,
+                'users': meeting.users,
             });
         },
     },
