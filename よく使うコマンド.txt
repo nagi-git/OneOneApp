@@ -9,6 +9,7 @@ php artisan make:migration create_meeting_user_table
 php artisan migrate
 php artisan migrate:rollback
 php artisan migrate:status
+php artisan migrate:fresh --seed
 
 CRUD一式セットのコントローラー
 php artisan make:controller <クラス名> --resource

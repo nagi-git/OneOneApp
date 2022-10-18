@@ -3,12 +3,12 @@
         <h2 class="accordion-header" :id="'heading' + id">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse' + id"
                 aria-expanded="false" :aria-controls="'collapse' + id">
-                <h5 class="mb-0 col-3">{{ title }}</h5>
-                <p class="h6 m-0 col-2">{{ date }}</p>
-                <p class="h6 m-0 col-2">{{ start_time }}～{{ end_time }}</p>
+                <h5 class="mb-0 col-4">{{ title }}</h5>
+                <p class="h6 m-0 col-2">{{ start_date_time.substring(0, 10) }}</p>
+                <p class="h6 m-0 col-2">{{ start_date_time.substring(11, 16) }}～{{ end_date_time.substring(11, 16) }}</p>
                 <i class="fa-solid fa-user-group"></i>
-                <span v-for:="user of users" class="d-inline badge bg-warning text-dark auto ms-2">
-                    {{ user.name }}
+                <span v-for:="meeting_user of meeting_users" class="d-inline badge bg-warning text-dark auto ms-2">
+                    {{ meeting_user.name }}
                 </span>
             </button>
         </h2>
@@ -35,9 +35,9 @@
                     <div class="d-inline mb-2">
                         <i class="fa-regular fa-pen-to-square me-2"></i>
                     </div>
-                    <div class="d-inline mb-2">
+                    <!-- <div class="d-inline mb-2">
                         {{ minute }}
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -46,6 +46,6 @@
 
 <script>
 export default {
-    props: ['id', 'title', 'date', 'agenda', 'how', 'start_time', 'end_time', 'users'],
+    props: ['id', 'title', 'agenda', 'how', 'start_date_time', 'end_date_time', 'meeting_users'],
 }
 </script>

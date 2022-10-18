@@ -9,7 +9,7 @@ class Meeting extends Model
 {
     use HasFactory;
     
-    public function users()
+    public function meeting_users()
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }

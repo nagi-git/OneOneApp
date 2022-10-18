@@ -18,8 +18,8 @@ class CreateMeetingsTable extends Migration
             $table->string('title')->comment('会議のタイトル');
             $table->dateTime('start_date_time')->comment('開始日時');
             $table->dateTime('end_date_time')->comment('終了日時');
-            $table->text('agenda')->comment('会議の内容');
             $table->text('how')->comment('会議の方法');
+            $table->text('agenda')->comment('会議の内容');
             $table->systemColumns();
         });
     }

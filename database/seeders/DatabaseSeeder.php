@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             MeetingTableSeeder::class,
+            MeetingUserTableSeeder::class
         ]);
     }
 }

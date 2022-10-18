@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Meeting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use DateTime;
 
 class MeetingController extends Controller
 {
@@ -17,7 +15,9 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        $meetings = Meeting::with('users')->get();
+        // $meetings = new Meeting();
+        // Log::error($meetings);
+        $meetings = Meeting::with('meeting_users')->orderBy('start_date_time', 'desc')->get();
         return $meetings;
     }
 
@@ -40,19 +40,19 @@ class MeetingController extends Controller
     public function store(Request $request)
     {
         $meeting = new Meeting;
-        $start_date_time = new DateTime($request->date.' '.$request->start_time);
-        $end_date_time = new DateTime($request->date.' '.$request->end_time);
         
         $meeting->title = $request->title;
-        $meeting->start_date_time = $start_date_time;
-        $meeting->end_date_time = $end_date_time;
+        $meeting->start_date_time = $request->start_date_time;
+        $meeting->end_date_time = $request->end_date_time;
         $meeting->agenda = $request->agenda;
         $meeting->how = $request->how;
-
         $meeting->save();
-        $meeting->meeting_user = $request->meeting_user;
-        $meeting->users()->attach($meeting->meeting_user);
-        return redirect('/home');
+
+        $meeting->meeting_users = $request->meeting_users;
+        $meeting->meeting_users()->attach($meeting->meeting_users);
+
+        $update_meeting = $this->show($meeting->id);
+        return $update_meeting;
     }
 
     /**
@@ -61,9 +61,9 @@ class MeetingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($meeting_id)
     {
-        //
+        return Meeting::with('meeting_users')->find($meeting_id);
     }
 
     /**
