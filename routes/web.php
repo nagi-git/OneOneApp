@@ -22,4 +22,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
 Route::get('/meetings', [App\Http\Controllers\MeetingController::class, 'index'])->name('meetings');
+Route::get('/meeting/{id}', [App\Http\Controllers\MeetingController::class, 'show'])->name('meeting');
 Route::post('/meeting', [App\Http\Controllers\MeetingController::class, 'store'])->name('meeting');

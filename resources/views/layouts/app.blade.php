@@ -16,12 +16,11 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    <script src="https://kit.fontawesome.com/f48b77db0c.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #b2d2ff;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     1on1アプリ

@@ -44,7 +44,6 @@ class MeetingController extends Controller
         $meeting->title = $request->title;
         $meeting->start_date_time = $request->start_date_time;
         $meeting->end_date_time = $request->end_date_time;
-        $meeting->agenda = $request->agenda;
         $meeting->how = $request->how;
         $meeting->save();
 
@@ -63,7 +62,8 @@ class MeetingController extends Controller
      */
     public function show($meeting_id)
     {
-        return Meeting::with('meeting_users')->find($meeting_id);
+        $meeting = Meeting::with('meeting_users')->find($meeting_id);
+        return $meeting;
     }
 
     /**

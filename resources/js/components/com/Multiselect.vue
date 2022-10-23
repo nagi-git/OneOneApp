@@ -26,7 +26,6 @@ export default {
     },
     methods: {
         onClose() {
-            console.log(this.meeting_users)
             this.$emit('onSelectUsers', this.meeting_users)
         }
     },
