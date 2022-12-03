@@ -15,8 +15,15 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
+import router from './router'
+import ExampleComponent from './components/com/ExampleComponent.vue';
+import MeetingList from './components/MeetingList.vue';
+import Multiselect from './components/com/Multiselect.vue';
+
+app.use(router);
 app.component('example-component', ExampleComponent);
+app.component('multi-select', Multiselect);
+app.component('meeting-list', MeetingList);
 
 /**
  * The following block of code may be used to automatically register your
@@ -35,5 +42,4 @@ app.component('example-component', ExampleComponent);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
-
 app.mount('#app');
