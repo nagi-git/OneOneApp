@@ -23,7 +23,9 @@
                         <button
                             type="button"
                             class="btn btn-outline-success py-0 px-2 mx-1 fs-6"
-                            @click="passMtgId(id)"
+                            data-bs-toggle="modal"
+                            data-bs-target="#meetingModal"
+                            @click="passMeetingId(id)"
                         >
                             会議／通知を編集
                         </button>
@@ -66,11 +68,14 @@
 
 <script>
 export default {
-    props: ['id', 'title', 'how', 'start_date_time', 'end_date_time', 'meeting_users'],
-    methods: {
-        passMtgId(meeting_id) {
-            console.log(meeting_id)
-        }
-    }
+    props: [
+        'id',
+        'title',
+        'how',
+        'start_date_time',
+        'end_date_time',
+        'meeting_users',
+        'passMeetingId'
+    ],
 }
 </script>

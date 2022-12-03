@@ -30,5 +30,7 @@ npm run dev
 
 RegistersUsers
 
+docker container run ubuntu echo Hello World!
+
 定義へ移動：F12
 戻る：Alt + Left

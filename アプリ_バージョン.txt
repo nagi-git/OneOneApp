@@ -13,4 +13,5 @@ XAMPP 8.1.6
 PHP 8.1.6
 Composer version 2.3.10
 Laravel Framework 9.20.0
+node.js v16.17.0
 

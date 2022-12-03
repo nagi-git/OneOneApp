@@ -11,8 +11,14 @@
                             aria-label="Close"
                         ></button>
                         <MeetingModalSidebar :menuSelect="menuSelect"></MeetingModalSidebar>
-                        <MeetingForm  v-if="selectMenu === 'meeting'" :addMeeting="addMeeting"></MeetingForm>
-                        <NotificationForm  v-if="selectMenu === 'notification'"></NotificationForm>
+                        <MeetingForm
+                            v-show="selectMenu === 'meeting'"
+                            :addMeeting="addMeeting"
+                            :meeting_id="meeting_id"
+                        ></MeetingForm>
+                        <NotificationForm
+                            v-show="selectMenu === 'notification'"
+                        ></NotificationForm>
                     </div>
                 </div>
             </div>
@@ -32,7 +38,7 @@ export default {
             selectMenu: 'meeting'
         }
     },
-    props: ['addMeeting'],
+    props: ['addMeeting', 'meeting_id'],
     components: {
         Multiselect,
         MeetingModalSidebar,

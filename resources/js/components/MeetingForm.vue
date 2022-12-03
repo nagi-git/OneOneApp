@@ -14,8 +14,14 @@
                         <i class="bi bi-emoji-smile me-2 ms-1"></i>
                     </div>
                     <div class="col-11 p-0">
-                        <input type="text" class="form-control form-control bg-white" id="title" name="title" v-model="meetingDetail.title"
-                            placeholder="タイトルを追加">
+                        <input
+                            type="text"
+                            class="form-control form-control bg-white"
+                            id="title"
+                            name="title"
+                            v-model="meetingDetail.title"
+                            placeholder="タイトルを追加"
+                        >
                     </div>
                 </div>
             </div>
@@ -25,13 +31,22 @@
                         <i class="bi bi-calendar-check me-2 ms-1"></i>
                     </div>
                     <div class="col-4 pe-1 p-0">
-                        <input id="date" class="form-control p-" type="date" name="date"
-                            v-model="meetingDetail.date"/>
+                        <input id="date"
+                            class="form-control"
+                            type="date"
+                            name="date"
+                            v-model="meetingDetail.date"
+                        />
                         <span id="date_selected"></span>
                     </div>
                     <div class="col-3 pe-0">
-                        <input id="start_time" class="form-control" type="time" name="start_time"
-                            v-model="meetingDetail.start_time" />
+                        <input
+                            id="start_time"
+                            class="form-control"
+                            type="time"
+                            name="start_time"
+                            v-model="meetingDetail.start_time"
+                        />
                         <span id="start_time_selected"></span>
                     </div>
                     <div class="col-auto d-flex align-items-center p-0 m-1">～</div>
@@ -91,10 +106,11 @@ import axios from 'axios';
 import Multiselect from './com/Multiselect.vue';
 
 export default {
-    props: ['addMeeting', 'onClose'],
-    data() {
+    props: ['addMeeting', 'onClose', 'meeting_id'],
+    data: () => {
         return {
             meetingDetail: {
+                id: '',
                 title: '',
                 date: '',
                 start_time: '',
@@ -108,27 +124,51 @@ export default {
     components: {
         Multiselect
     },
+    watch: {
+        meeting_id: {
+            handler: function () {
+                if (this.meeting_id === undefined) return
+                axios.get('/meeting/' + this.meeting_id)
+                    .then(res => {
+                        this.meetingDetail = res.data,
+                        this.meetingDetail.date = res.data.start_date_time.substring(0, 10),
+                        this.meetingDetail.start_time = res.data.start_date_time.substring(11, 19),
+                        this.meetingDetail.end_time = res.data.end_date_time.substring(11, 19)
+                    })
+            }
+        },
+    },
     methods: {
         postMeeting() {
-            axios.post('/meeting',{
+            const meetingDetailForm = {
                 ...this.meetingDetail,
                 meeting_users: this.meetingDetail.meeting_users.map(meeting_user => meeting_user.id),
                 start_date_time: `${this.meetingDetail.date} ${this.meetingDetail.start_time}`,
                 end_date_time: `${this.meetingDetail.date} ${this.meetingDetail.end_time}`,
-            }).then(res => {
-                this.addMeeting(res.data)
-            })
-            .then(
-                this.clearMeeting()
-            )
+            }
+            if (this.meetingDetail.id) {
+                console.log(this.meetingDetail.id)
+                axios.put('/meeting/' + this.meetingDetail.id, meetingDetailForm)
+                .then(res => {
+                    console.log(res.data)
+                })
+            } else {
+                axios.post('/meeting', meetingDetailForm)
+                .then(res => {
+                    this.addMeeting(res.data)
+                })
+                .then(
+                    this.clearMeeting()
+                )
+            }
         },
         clearMeeting() {
-            this.meetingDetail.title = '';
-            this.meetingDetail.date = '';
-            this.meetingDetail.start_time = '';
-            this.meetingDetail.end_time = '';
-            this.meetingDetail.meeting_users = [];
-            this.meetingDetail.how = '';
+            this.meetingDetail.title = ''
+            this.meetingDetail.date = ''
+            this.meetingDetail.start_time = ''
+            this.meetingDetail.end_time = ''
+            this.meetingDetail.meeting_users = []
+            this.meetingDetail.how = ''
         },
         onSelectUsers(selectedUsers) {
             this.meetingDetail.meeting_users = selectedUsers
@@ -136,7 +176,7 @@ export default {
     },
     mounted() {
         axios.get('/users')
-            .then(res => this.users = res.data);
+            .then(res => this.users = res.data)
     }
 }
 </script>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meeting;
+use App\Models\MeetingUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class MeetingController extends Controller
 {
@@ -60,9 +62,9 @@ class MeetingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($meeting_id)
+    public function show($id)
     {
-        $meeting = Meeting::with('meeting_users')->find($meeting_id);
+        $meeting = Meeting::with('meeting_users')->find($id);
         return $meeting;
     }
 
@@ -86,7 +88,17 @@ class MeetingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $meeting = Meeting::with('meeting_users')->find($id);
+        
+        $meeting->title = $request->title;
+        $meeting->start_date_time = $request->start_date_time;
+        $meeting->end_date_time = $request->end_date_time;
+        $meeting->how = $request->how;
+        $meeting->save();
+
+        $meeting->meeting_users = $request->meeting_users;
+        $meeting->meeting_users()->sync($meeting->meeting_users);
+        // return this->index();
     }
 
     /**

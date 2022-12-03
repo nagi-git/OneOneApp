@@ -1,0 +1,19 @@
+sudo service docker start
+
+docker container run ubuntu echo Hello World!
+
+docker container run -d ubuntu sleep infinity
+
+minami@DESKTOP-2FN0OQR:~$ docker container run -d ubuntu sleep infinity
+61982c13f5c407eafa7e4af52600e19f175d1cdfa3979a201193248f437178b8
+minami@DESKTOP-2FN0OQR:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND            CREATED          STATUS          PORTS     NAMES
+61982c13f5c4   ubuntu    "sleep infinity"   12 seconds ago   Up 10 seconds             great_gauss
+minami@DESKTOP-2FN0OQR:~$ docker exec -t -i 61 bash
+
+docker run -d -v
+runのヘルプでわかる
+
+apt-get update
+
+\\wsl$
